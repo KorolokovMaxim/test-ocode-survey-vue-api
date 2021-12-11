@@ -45,7 +45,7 @@ public class UserService {
     }
 
 
-    public void saveCompletedSurvey(Long[] answers, String username, Long surveyId){
+    public Survey saveCompletedSurvey(Long[] answers, String username, Long surveyId){
         Survey survey = surveyRepository.findById(surveyId).orElseThrow();
         User user = userRepository.findByUsername(username).orElseThrow();
 
@@ -61,6 +61,7 @@ public class UserService {
         user.getSurveyUser().add(survey);
 
         userRepository.save(user);
+        return survey;
     }
 
     public List<ViewUserAnswer> showCompletedUserSurvey(Survey survey){

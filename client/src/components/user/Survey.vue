@@ -50,10 +50,10 @@ export default {
       }
     },
     async answer() {
-      await this.$axios.post(`http://localhost:8080/api/user/survey/${this.survey.id}/saveCompletedSurvey`, {
-        answers: this.answers
-      }, {
-        headers: authHeader(this.user)
+      await this.$store.dispatch('survey/completeSurvey', {
+        survey: this.survey,
+        answers: this.answers,
+        user: this.user
       });
 
       await this.$router.push({ name: 'survey-completed', params: { survey: this.survey.id }});

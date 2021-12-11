@@ -71,23 +71,12 @@ export default {
     }
   },
   methods: {
-    handleLogin(user) {
+    async handleLogin(user) {
       this.loading = true;
 
-      this.$store.dispatch("auth/login", user).then(
-        () => {
-          this.$router.push("/profile");
-        },
-        (error) => {
-          this.loading = false;
-          this.message =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
-        }
-      );
+      await this.$store.dispatch("auth/login", user);
+
+      window.location.href = '/profile';
     },
   },
 };

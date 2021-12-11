@@ -58,13 +58,13 @@ public class UserController {
     }
 
     @PostMapping("/survey/{surveyId}/saveCompletedSurvey")
-    public ResponseEntity<?> saveCompletedSurvey(@PathVariable Long surveyId,
+    public ResponseEntity<Survey> saveCompletedSurvey(@PathVariable Long surveyId,
                                                  @RequestBody CompletedSurveyRequest request){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
 
-        userService.saveCompletedSurvey(request.getAnswers(), username, surveyId);
-        return new ResponseEntity<>(new MessageResponse("Save user answers is successfully"), HttpStatus.OK);
+       Survey survey = userService.saveCompletedSurvey(request.getAnswers(), username, surveyId);
+        return new ResponseEntity<>(survey, HttpStatus.OK);
     }
 
     @GetMapping("/show-completed-survey/{surveyId}")

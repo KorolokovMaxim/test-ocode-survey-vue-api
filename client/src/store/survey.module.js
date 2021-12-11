@@ -33,7 +33,16 @@ export const survey = {
                 headers: authHeader(data.user)
             });
 
-            commit('setCompleted', response.data);
+            commit('replaceCompleted', response.data);
+        },
+        async completeSurvey({commit}, data) {
+            const response = await axios.post(`http://localhost:8080/api/user/survey/${data.survey.id}/saveCompletedSurvey`, {
+                answers: data.answers
+            }, {
+                headers: authHeader(data.user)
+            });
+
+            commit('pushCompleted', response.data);
         },
         async deleteSurvey({commit}, data) {
           const response = await axios.delete(`http://localhost:8080/api/admin/survey/delete/${data.survey.id}`,{
@@ -66,8 +75,11 @@ export const survey = {
         replacementSurveys(state, surveys) {
             state.surveys = surveys;
         },
-        setCompleted(state, surveys) {
+        replaceCompleted(state, surveys) {
             state.completed = surveys;
+        },
+        pushCompleted(state, survey) {
+            state.completed.push(survey);
         },
         setSurvey(state, survey) {
             state.surveys.push(survey);
