@@ -102,23 +102,21 @@ export default {
       );
     },
     async loadData() {
-      if (!this.currentUser) {
-        return;
-      }
+      if (this.currentUser) {
+        if (this.currentUser.roles.includes('ROLE_ADMIN')) {
+          await this.$store.dispatch('users/loadUsers', {
+            user: this.currentUser
+          });
+        }
 
-      if (this.currentUser.roles.includes('ROLE_ADMIN')) {
-        await this.$store.dispatch('users/loadUsers', {
+        await this.$store.dispatch('survey/loadSurveys', {
+          user: this.currentUser
+        });
+
+        await this.$store.dispatch('survey/loadCompleted', {
           user: this.currentUser
         });
       }
-
-      await this.$store.dispatch('survey/loadSurveys', {
-        user: this.currentUser
-      });
-
-      await this.$store.dispatch('survey/loadCompleted', {
-        user: this.currentUser
-      });
 
       this.loading = false;
     },
