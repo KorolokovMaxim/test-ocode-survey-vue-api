@@ -3,7 +3,7 @@
     <h2>{{ survey.name }}</h2>
     <Form @submit.stop.prevent="submitForm">
       <div class="form-group">
-        <label for="survey-name">Опрос</label>
+        <label for="survey-name">Вопросы: </label>
         <input id="survey-name" type="text" class="form-control" v-model="questionName"/>
         <input class="ok-button" type="submit" value="OK">
       </div>
@@ -13,7 +13,7 @@
         <router-link :to="{ name: 'admin-question', params: { survey: survey.id, id: question.id  }}">
           {{ question.name }}
         </router-link>
-        <div class="delete-button" @click="onDelete(question)">Delete</div>
+        <div class="delete-button" @click="onDelete(question)">Удалить</div>
       </li>
     </ul>
   </div>

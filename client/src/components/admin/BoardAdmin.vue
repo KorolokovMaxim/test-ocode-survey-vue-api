@@ -16,7 +16,7 @@
         <router-link :to="{ name: 'admin-survey', params: { id: survey.id }}">
           {{ survey.name }}
         </router-link>
-        <div class="delete-button" @click="onDelete(survey)">Delete</div>
+        <div class="delete-button" @click="onDelete(survey)">Удалить</div>
       </li>
     </ul>
   </div>

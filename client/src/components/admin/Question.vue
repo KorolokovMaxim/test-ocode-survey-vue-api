@@ -5,7 +5,7 @@
     </h2>
     <Form @submit.stop.prevent="submitForm">
       <div class="form-group">
-        <label for="answer-name">Опрос</label>
+        <label for="answer-name">Ответы: </label>
         <input id="answer-name" type="text" class="form-control" v-model="answerName"/>
         <input class="ok-button" type="submit" value="OK">
       </div>
@@ -13,7 +13,7 @@
       <ul class="list-group">
         <li v-for="(answer, i) in answers" :key="i" class="list-group-item">
           {{ answer.name }}
-          <div class="delete-button" @click="onDelete(answer)">Delete</div>
+          <div class="delete-button" @click="onDelete(answer)">Удалить</div>
         </li>
       </ul>
   </div>

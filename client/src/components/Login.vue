@@ -9,12 +9,12 @@
       <Form @submit="handleLogin" :validation-schema="schema">
         <div class="form-group">
           <label for="username">Username</label>
-          <Field name="username" type="text" class="form-control" />
+          <Field id="username" name="username" type="text" class="form-control" />
           <ErrorMessage name="username" class="error-feedback" />
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <Field name="password" type="password" class="form-control" />
+          <Field id="password" name="password" type="password" class="form-control" />
           <ErrorMessage name="password" class="error-feedback" />
         </div>
 
@@ -50,8 +50,8 @@ export default {
   },
   data() {
     const schema = yup.object().shape({
-      username: yup.string().required("Username is required!"),
-      password: yup.string().required("Password is required!"),
+      username: yup.string().required("Имя не может быть пустым!"),
+      password: yup.string().required("Пароль не может быть пустым!"),
     });
 
     return {

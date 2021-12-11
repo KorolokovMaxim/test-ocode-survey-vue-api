@@ -7,7 +7,7 @@
           {{ question.question.name }}
         </div>
         <div class="answers-container">
-          <div v-for="(answer, j) in question.answers" :key="j">
+          <div class="answer-completed" v-for="(answer, j) in question.answers" :key="j">
             {{ answer.name }}
           </div>
         </div>
@@ -54,8 +54,15 @@ export default {
 .questions-container {
   margin-top: 30px;
 }
-
 .question-container {
   margin: 20px 0;
+}
+.question-name{
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+.answer-completed{
+
 }
 </style>

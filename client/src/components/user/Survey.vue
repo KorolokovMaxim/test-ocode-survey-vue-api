@@ -1,15 +1,15 @@
 <template>
   <div v-if="!loading" class="survey">
-    <h2>{{ survey.name }}</h2>
+    <h2 class="survey-name">{{ survey.name }}</h2>
     <div class="questions">
       <div v-for="(question, i) in questions" :key="i">
-        <h3>{{ question.question.name }}</h3>
+        <h3 class="question">{{ question.question.name }}</h3>
         <div v-for="(answer, j) in question.answerList" :key="j">
-          <input type="checkbox" :id="answer.id" @change="onChange($event, answer)">
+          <input class="answer-input" type="checkbox" :id="answer.id" @change="onChange($event, answer)">
           <label :for="answer.id">{{ answer.name }}</label>
         </div>
       </div>
-      <button v-if="questions.length !== 0" @click="answer">Ответить</button>
+      <button class="completed-answer-button" v-if="questions.length !== 0" @click="answer">Ответить</button>
     </div>
   </div>
   <div v-else>
@@ -81,5 +81,23 @@ export default {
   top: 10px;
   cursor: pointer;
   color: red;
+}
+.survey-name{
+  margin-top: 25px;
+}
+.question{
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+.answer-input{
+  margin-right: 12px;
+}
+.completed-answer-button{
+  padding: 0 5%;
+  background: #e92d6a;
+  border: none;
+  color: wheat;
+  margin-top: 15px;
+  margin-bottom: 35px;
 }
 </style>

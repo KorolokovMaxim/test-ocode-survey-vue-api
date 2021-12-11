@@ -57,14 +57,14 @@ export default {
     const schema = yup.object().shape({
       username: yup
         .string()
-        .required("Username is required!")
-        .min(3, "Must be at least 3 characters!")
-        .max(20, "Must be maximum 20 characters!"),
+        .required("Имя пользователя обязательно!")
+        .min(3, "Не менее 3 символов!")
+        .max(20, "Не более 20 символов!"),
       password: yup
         .string()
-        .required("Password is required!")
-        .min(6, "Must be at least 6 characters!")
-        .max(40, "Must be maximum 40 characters!"),
+        .required("Пароль обязательный!")
+        .min(6, "Не менее 6 символов!")
+        .max(40, "Не более 40 символов!"),
     });
 
     return {
