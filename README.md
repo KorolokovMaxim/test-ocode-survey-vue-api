@@ -26,6 +26,8 @@ Frontend - Vue 3 CLI
  
  6.2 Написать в терминале npm run serve
  
+ 6.3 Зайти на сайт - http://localhost:8081/
+ 
 
 ADMIN LOGIN - admin
 
